@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@mdi/font": "^7.3.67"
+  },
+  "devDependencies": {
+    "scss-reset": "^1.4.2"
+  }
+}

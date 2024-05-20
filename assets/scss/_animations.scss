@@ -1,0 +1,15 @@
+// WhatsApp button animation
+@mixin whatsapp-animation {
+    -o-animation: whatsapp-pulse 1.5s ease-out infinite;
+	-moz-animation: whatsapp-pulse 1.5s ease-out infinite;
+	-webkit-animation: whatsapp-pulse 1.5s ease-out infinite;
+	animation: whatsapp-pulse 1.5s ease-out infinite;
+    @keyframes whatsapp-pulse {
+        0% {
+            box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+        }
+        80% {
+            box-shadow: 0 0 0 14px rgba(37, 211, 102, 0);
+        }
+    }
+}

@@ -1,0 +1,336 @@
+@use "sass:math";
+
+// Create breakpoints for every col breaks
+@mixin responsive($device) {
+    @if $device == xs {
+        @media screen and (max-width: 576px) {
+            @content;
+        }
+    } @else if $device == sm {
+        @media screen and (min-width: 577px) and (max-width: 767px) {
+            @content;
+        }
+    } @else if $device == md {
+        @media screen and (min-width: 768px) and (max-width: 991px) {
+            @content;
+        }
+    } @else if $device == lg {
+        @media screen and (min-width: 992px) and (max-width: 1199px) {
+            @content;
+        }
+    } @else if $device == xl {
+        @media screen and (min-width: 1200px) {
+            @content;
+        }
+    }
+}
+
+// Transform
+@mixin transform($action, $size...) {
+    -webkit-transform: #{$action}(#{$size});
+    -moz-transform: #{$action}(#{$size});
+    -ms-transform: #{$action}(#{$size});
+    -o-transform: #{$action}(#{$size});
+    transform: #{$action}(#{$size});
+}
+
+// Breadcrumb
+@mixin breadcrumb {
+    #breadcrumb {
+        background: $white;
+        @include bradius(50);
+        padding: 7px 15px;
+        font-size: em(12);
+        a, a strong {            
+            color: $black;
+        }
+    }
+}
+
+// Transition
+@mixin transition($time) {
+    -o-transition: #{$time}s ease-in-out;
+	-moz-transition: #{$time}s ease-in-out;
+	-webkit-transition: #{$time}s ease-in-out;
+	transition: #{$time}s ease-in-out;
+}
+
+// Margin-top
+$i: 10;
+@while $i <= 100 {
+	.margin-top-#{$i} {
+        margin-top: #{$i}px;
+    }
+    $i: $i + 10;
+}
+
+// Margin-bottom
+$i: 10;
+@while $i <= 100 {
+	.margin-bottom-#{$i} {
+        margin-bottom: #{$i}px !important;
+    }
+    $i: $i + 10;
+}
+
+// Picture
+@mixin picture {
+    figure {
+        picture {
+            @include bradius(15);
+            overflow: hidden;
+            object-fit: cover;
+            display: block;
+            img {
+                @include transition(.45);
+            }
+        }
+        &:hover img {
+            scale: 1.2;
+        }
+        figcaption{
+            p{
+                padding: 0 20px;
+                position: relative;
+                @include transition(.45);
+                top: -45px;
+                a {
+                    display: block;
+                    background: $main;
+                    color: $white;
+                    padding: 5px 25px;
+                    @include bradius(6);
+                    @include transition(.45);
+                    margin-inline: auto;
+                }
+            }
+        }
+    }
+    &:hover{
+        figcaption{
+            p {
+                padding: 0;
+                a{
+                    background: $secondary;
+                    @include bradius(0);
+                }   
+            }
+        }
+    }
+}
+
+// Holder
+@mixin holder($height) {
+    min-height: #{$height}px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+// Titles
+@mixin title {
+    color: $main;
+    position: relative;
+    text-transform: uppercase;
+    font-size: em(36);
+    font-weight: 700;
+    margin-bottom: 20px;
+    &::before {
+        @include hrTitleBefore;
+        @include responsive(xs) {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        @include responsive(sm) {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        @include responsive(md) {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+    &::after {
+        @include hrTitleAfter;
+        @include responsive(xs) {
+            left: 62%;
+            transform: translateX(-50%);
+        }
+        @include responsive(sm) {
+            left: 62%;
+            transform: translateX(-50%);
+        }
+        @include responsive(md) {
+            left: 62%;
+            transform: translateX(-50%);
+        }
+    }
+}
+
+// Divider titles
+@mixin hrTitleBefore {
+    content: "";
+    position: absolute;
+    display: block;
+	background: $main;
+    bottom: 0;
+    height: 5px;
+    left: 3%;
+    margin-left: -35px;
+    width: 25px;
+    @include bradius(7)
+}
+@mixin hrTitleAfter {
+    content: "";
+    position: absolute;
+    display: block;
+	background: $secondary;
+    bottom: 0;
+    height: 5px;
+    left: 5.2%;
+    margin-left: -35px;
+    width: 60px;
+    @include bradius(7)
+}
+
+// Footer headings
+@mixin footerHeading {
+    font-size: em(24);
+    font-weight: 600;
+    margin-bottom: 25px;
+    position: relative;
+    &::after {
+        @include hrFooterHeading;
+        @include responsive(xs) {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        @include responsive(sm) {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        @include responsive(md) {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+}
+@mixin hrFooterHeading {
+    content: "";
+    display: block;
+    position: absolute;
+    background: $secondary;
+    bottom: -7px;
+    height: 6px;
+    left: 0;
+    width: 50px;
+    @include bradius(6);
+}
+
+@mixin responsiveMobileMenu {
+    display: inline-flex;
+    width: 90%;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    left: 15px;
+    bottom: 0;
+    gap: 10px;
+    background: rgba($white, .75);
+    @include bradius(50);
+    padding: 0 22px;
+}
+
+// Botões social
+@mixin social {
+    ul.buttons {
+        li {
+            a {
+                background: $btn-social;
+                font-size: em(22);
+                border-radius: 100%;
+                padding: 3px 8px;
+                color: $white;
+                @include border(3, $btn-social);
+                @include transition(.35);
+                &:hover {
+                    background: none;
+                    @include bshadow(0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22));
+                    color: $black;
+                }
+            }
+        }
+        @include responsive(xs) {
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        @include responsive(sm) {
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        @include responsive(md) {
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+    }
+}
+
+// Head páginas
+@mixin headBg {
+    background: url(../../images/banner/heading.webp) no-repeat center;
+    background-size: cover;
+    position: relative;
+    padding: 80px 0 0 0;
+    h1 {
+        color: $white;
+        font-size: em(36);
+        text-transform: uppercase;
+        font-weight: 700;
+    }
+    .hero-waves {
+        margin-top: 60px;
+        @include responsive(xs) {
+        margin-top: 0;
+        }
+        @include responsive(sm) {
+        margin-top: 0;
+        }
+        @include responsive(md) {
+        margin-top: 0;
+        }
+    }
+    @include responsive(xs) {
+        padding: 30px 0 0 0;
+    }
+    @include responsive(sm) {
+        padding: 30px 0 0 0;
+    }
+    @include responsive(md) {
+        padding: 30px 0 0 0;
+    }
+}
+
+// Border
+@mixin border($border: 2, $color: $main) {
+	border: #{$border}px solid $color;
+}
+
+// Border radius
+@mixin bradius($bradius: 35) {
+    -o-border-radius: #{$bradius}px;
+	-moz-border-radius: #{$bradius}px;
+	-webkit-border-radius: #{$bradius}px;
+	border-radius: #{$bradius}px;
+}
+
+// Box shadow
+@mixin bshadow($bshadow...) {
+	box-shadow: #{$bshadow};
+}
+
+// Calculate px to rem
+@function em($pixels, $context: 16) {
+	@return math.div($pixels, $context) * 1rem;
+}

@@ -1,0 +1,68 @@
+#about-produtos {
+    .select-menu {
+        padding: 10px 20px;
+        @include bshadow(rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset);
+        @include bradius(6);
+        background: $white;
+        @include responsive(xs) {
+            padding: 5px 20px;
+            @include bradius(50);
+        }
+        @include responsive(sm) {
+            padding: 5px 20px;
+            @include bradius(50);
+        }
+        @include responsive(md) {
+            padding: 5px 20px;
+            @include bradius(50);
+        }
+    }
+    li {
+        display: block;
+        background: #F0F0F0;
+        cursor: pointer;
+        padding: 8px 12px;
+        @include border (2, $secondary);
+        @include bradius(6);
+        @include transition(.3);
+        font-weight: 500;
+        font-size: em(18);
+        margin: 15px 0;
+        &:hover, &.active {
+            translate: -20px 0;
+            background: $secondary;
+            color: $white;
+            @include responsive(xs) {
+                translate: 0 -20px;
+            }
+            @include responsive(sm) {
+                translate: 0 -20px;
+            }
+            @include responsive(md) {
+                translate: 0 -20px;
+            }
+        }
+        @include responsive(xs) {
+            display: inline-block;
+            padding: 6px 12px;
+            @include bradius(50);
+        }
+        @include responsive(sm) {
+            display: inline-block;
+            padding: 6px 12px;
+            @include bradius(50);
+        }
+        @include responsive(md) {
+            display: inline-block;
+            padding: 6px 12px;
+            @include bradius(50);
+        }
+    }
+    .produtos-show {
+        height: 100vh;
+        overflow-y: scroll;
+        .holder {
+            @include picture;
+        }
+    }
+}
