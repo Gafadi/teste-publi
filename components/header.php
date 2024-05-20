@@ -40,7 +40,7 @@
                     </div>
                     <nav>
                         <ul class="links-mobile">
-                            <li><a href="<?=$url; ?>" title="Home">Home</a></li>
+                            <li><a href="<?=$url; ?>index" title="Home">Home</a></li>
                             <li><a href="<?=$url; ?>sobre" title="Sobre Nós">Sobre Nós</a></li>
                             <li class="dropdown">
                                 <a href="<?=$url; ?>produtos" title="Confira nossos Produtos">Produtos</a><i class="mdi mdi-chevron-right"></i>

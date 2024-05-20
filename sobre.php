@@ -1,5 +1,5 @@
 <?php
-    $title = "Loja Tintas";
+    $title = "Sobre Nós";
     $description = "";
     $keywords = $title;
     $meta_img = "";

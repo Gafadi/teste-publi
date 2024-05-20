@@ -1,6 +1,5 @@
 <?php
     $diferenciais = [
-        "Suporte Técnico",
         "Pontualidade na Entrega",
         "Maior Estoque",
         "Facilidade no Pagamento",

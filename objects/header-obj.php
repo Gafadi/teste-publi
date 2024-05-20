@@ -22,7 +22,7 @@
         ],
     ];
     $nav = [
-        "" => "Home",
+        "index" => "Home",
         "sobre" => "Sobre Nós",
         "Produtos" => [
             "Principal" => [
